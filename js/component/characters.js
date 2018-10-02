@@ -1,4 +1,5 @@
 import {writeToDom} from "../helper/util.js";
+import {detailsBuilder} from './details.js';
 
 const characters = [
     {name: 'John Snow',
@@ -23,14 +24,17 @@ const characters = [
 ];
 
 function charClick(e) {
-    const charId = e.target.closest('#character-card').id;
+    const charId = e.target.closest('.character-card').id;
     const currentChar = characters.find(x => x.id === charId);
+    detailsBuilder(currentChar);
 }
 
 function createEvents() {
     let x = document.getElementsByClassName('character-card');
     for(let i = 0; i < x.length; i++) {
-        x[i].addEventListener('click', charClick());
+        x[i].addEventListener('click', function(e) {
+            charClick(e);
+        });
     }
 }
 
