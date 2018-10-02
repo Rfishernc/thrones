@@ -22,12 +22,32 @@ const characters = [
     id: 'char4'}
 ];
 
+function charClick(e) {
+    const charId = e.target.closest('#character-card').id;
+    const currentChar = characters.find(x => x.id === charId);
+}
+
+function createEvents() {
+    let x = document.getElementsByClassName('character-card');
+    for(let i = 0; i < x.length; i++) {
+        x[i].addEventListener('click', charClick());
+    }
+}
+
 function charBuilder() {
     let string = '';
     characters.forEach((character) => {
-        string += `<h1>${character.name}</h1>`
+        string+=`<div class='col-2 character-card' id=${character.id}>`
+        string+=    `<div class="card">`
+        string+=        `<img class="card-img-top" src="${character.image}" alt="${character.name}">`
+        string+=        `<div class="card-body">`
+        string+=            `<h5 class="card-title">${character.name}</h5>`
+        string+=        `</div>`
+        string+=    `</div>`
+        string+=`</div>`;
     });
     writeToDom(string);
+    createEvents();
 }
 
 export {charBuilder};
