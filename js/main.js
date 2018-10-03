@@ -1,7 +1,7 @@
-import {charBuilder} from './component/characters.js';
+import {getChar} from './data/charData.js';
 
 function init() {
-    charBuilder();
+   getChar();
 }
 
 init();

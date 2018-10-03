@@ -1,5 +1,5 @@
 import {writeToDom} from '../helper/util.js';
-import {charBuilder} from './characters.js';
+import {charBuilder, getCharz} from './characters.js';
 
 function detailsBuilder(character) {
     let string = '';
@@ -21,8 +21,8 @@ function detailsBuilder(character) {
 
 function clickX() {
     document.getElementById('x').addEventListener('click', function() {
-    charBuilder();
-    })
+    charBuilder(getCharz());
+    });
 }
 
 export {detailsBuilder};
